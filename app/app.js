@@ -15,29 +15,50 @@ $(document).ready(function(){
     var keyData = $('.input-key').val();
     var valueData = $('.input-value').val();
     // write to db
-    localStorage.setItem(keyData, valueData);
+    // localStorage.setItem(keyData, valueData);
     // read from db
-    var displayText = keyData + ' | ' + localStorage.getItem(keyData);
+    var displayText = keyData;
     // this only displays the last one? might want to switch to html
     // and append a div
     // <div class="display-data-item" data-keyValue="keyData">valueData</div>
     // if you use backticks ` you can use ${templateLiterals}
     // TODO make this vars make sense across the app
-    $('.container-data').html('<div class="display-data-item" data-keyValue="'+ keyData +'">'+valueData+'</div>');
+    var $noteDiv = $('<div></div>');
+    $noteDiv.addClass('note');
+    $noteDiv.addClass(keyData);
+    $noteDiv.text(displayText);
+    $noteDiv.appendTo('.container-data');
+
+    // $('.container-data').html('<div class="display-data-item" data-keyValue="'+ keyData +'">'+valueData+'</div>');
     $('.input-key').val('');
     $('.input-value').val('');
   });
 
 
+  $('.btn-submit').on('click', function(event) {
+    // console.log($('.note-content').text());
+    var value = $('.note-content').text();
+    var key = localStorage.length + 1;
+    localStorage.setItem(key, value)
+  })
+
+
+
+
   // update db
     // need to expand when  more than 1 item is added
 
+
   // delete item
-  $('.container-data').on('click', '.display-data-item', function(e){
-    console.log(e.currentTarget.dataset.keyvalue);
-    var keyData = e.currentTarget.dataset.keyvalue;
-    localStorage.removeItem(keyData);
-    $('.container-data').text('');
+  $('.container-data').on('click', '.note', function(event){
+    console.log(event);
+    // console.log('hello');
+    var text = localStorage.getItem(event.currentTarget.classList[1])
+    // console.log(text);
+    console.log(event.currentTarget.classList[1])
+    if(!text) {
+      $('.note-content').text(text);
+    }
   });
   // delete all?
   $('.btn-clear').click(function(){
