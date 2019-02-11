@@ -98,6 +98,7 @@ $(document).ready(function(){
     var key = event.currentTarget.innerText;
     var text = obj[key];
     // console.log(text);
+    $('.input-key').val(key);
     $('.note-content').text(text);
     // console.log(text);
     // console.log(event.currentTarget.classList[1])
