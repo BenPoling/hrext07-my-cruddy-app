@@ -1,0 +1,10 @@
+.note-content {
+	max-width: 800px;
+	border-style: solid;
+	border-color: black;
+/*	display: flex;*/
+}
+
+.ui-dialog-titlebar-close{
+    display: none;
+}
