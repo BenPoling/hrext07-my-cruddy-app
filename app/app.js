@@ -112,5 +112,21 @@ $(document).ready(function(){
     localStorage.clear();
     $('.container-data').text('');
   });
+  
+
+  $('.container-data').on('mouseover', '.note', function(event) {
+    console.log(event);
+    var obj = JSON.parse(localStorage.getItem('data'));
+    var arr = event.currentTarget.innerText.split(' ');
+    var key = arr[arr.length - 1];
+    var settings = {
+      width: 600,
+      title: key
+    }
+    $('.popUp-dialogUI').html('');
+    $('.popUp-dialogUI').html(obj[key]);
+    $('.popUp-dialogUI').dialog(settings).dialog('open');
+  })
+
 
 });
