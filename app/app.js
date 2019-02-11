@@ -14,7 +14,11 @@ $(document).ready(function(){
     console.log(e);
     var keyData = $('.input-key').val();
     var valueData = $('.note-content').text();
-    if(localStorage.getItem('data') === null) {
+    if(keyData === '') {
+      alert('No title!');
+    } else if(valueData === '') {
+      alert('No note content!');
+    } else if(localStorage.getItem('data') === null) {
       var obj = {};
       obj[keyData] = valueData;
       obj = JSON.stringify(obj);
@@ -39,15 +43,28 @@ $(document).ready(function(){
     // <div class="display-data-item" data-keyValue="keyData">valueData</div>
     // if you use backticks ` you can use ${templateLiterals}
     // TODO make this vars make sense across the app
-    var $noteDiv = $('<div></div>');
-    $noteDiv.addClass('note');
-    $noteDiv.addClass(keyData);
-    $noteDiv.text(displayText);
-    $noteDiv.appendTo('.container-data');
+    // var $noteDiv = $('<div></div>');
+    // $noteDiv.addClass('note');
+    var dataObj = JSON.parse(localStorage.getItem('data'));
+    console.log(dataObj);
+    $('.container-data').empty();
+    for(var key in dataObj) {
+      var $noteDiv = $('<div></div>');
+      $noteDiv.addClass('note');
+      $noteDiv.class = (key);
+      $noteDiv.text(key);
+      console.log(dataObj[key])
+      // console.log($noteDiv);
+      $('.container-data').append($noteDiv)
+      // $noteDiv.appendTo('.container-data');      
+    }
+    // $noteDiv.addClass(keyData);
+    // $noteDiv.text(displayText);
+    // $noteDiv.appendTo('.container-data');
 
     // $('.container-data').html('<div class="display-data-item" data-keyValue="'+ keyData +'">'+valueData+'</div>');
     $('.input-key').val('');
-    $('.input-value').val('');
+    $('.note-content').html('');
   });
 
 
