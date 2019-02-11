@@ -8,7 +8,19 @@ interact with localstorage
 $(document).ready(function(){
   // this is where we jquery
   //var keyData = 'ourKey'; // going to need to make this dynamic?
-
+    var dataObj = JSON.parse(localStorage.getItem('data'));
+    // console.log(dataObj);
+    $('.container-data').empty();
+    for(var key in dataObj) {
+      var $noteDiv = $('<div></div>');
+      $noteDiv.addClass('note');
+      $noteDiv.class = (key);
+      $noteDiv.text(key);
+      console.log(dataObj[key])
+      // console.log($noteDiv);
+      $('.container-data').append($noteDiv)
+      // $noteDiv.appendTo('.container-data');      
+    }
 
   $('.btn-submit').on('click', function(e){
     console.log(e);
@@ -17,7 +29,7 @@ $(document).ready(function(){
     if(keyData === '') {
       alert('No title!');
     } else if(valueData === '') {
-      alert('No note content!');
+      alert('No note content!');t
     } else if(localStorage.getItem('data') === null) {
       var obj = {};
       obj[keyData] = valueData;
@@ -37,16 +49,14 @@ $(document).ready(function(){
     // write to db
     // localStorage.setItem(keyData, valueData);
     // read from db
-    var displayText = keyData;
+    // var displayText = keyData;
     // this only displays the last one? might want to switch to html
     // and append a div
     // <div class="display-data-item" data-keyValue="keyData">valueData</div>
     // if you use backticks ` you can use ${templateLiterals}
     // TODO make this vars make sense across the app
-    // var $noteDiv = $('<div></div>');
-    // $noteDiv.addClass('note');
     var dataObj = JSON.parse(localStorage.getItem('data'));
-    console.log(dataObj);
+    // console.log(dataObj);
     $('.container-data').empty();
     for(var key in dataObj) {
       var $noteDiv = $('<div></div>');
