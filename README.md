@@ -23,6 +23,7 @@ dialog for mouse over/have to import jQuery UI also to use this-https://jqueryui
 - [ ] have pop up window/or it toggle from side or bottom when clicked that you can edit
 - [ ] have uneditable pop up window come up on mouse over(jQuery dialog)-hide this div
 - [ ] have update button
+- [ ] make save to local storage on submit/the title is the key
 
 - [ ] make the closed div look like a folder
 - [ ] hard code a user name and pass word to access the notes
