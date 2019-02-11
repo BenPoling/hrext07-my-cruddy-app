@@ -59,19 +59,6 @@ $(document).ready(function(){
     // if you use backticks ` you can use ${templateLiterals}
     // TODO make this vars make sense across the app
     reloadNotes();
-    // var dataObj = JSON.parse(localStorage.getItem('data'));
-    // // console.log(dataObj);
-    // $('.container-data').empty();
-    // for(var key in dataObj) {
-    //   var $noteDiv = $('<div></div>');
-    //   $noteDiv.addClass('note');
-    //   $noteDiv.addClass(key);
-    //   var date = Date().split(' ').slice(0,3).join(' ');
-    //   $noteDiv.text(`${date} | ${key}`);
-    //   // console.log($noteDiv);
-    //   $('.container-data').append($noteDiv)
-    //   // $noteDiv.appendTo('.container-data');      
-    // }
     // $noteDiv.addClass(keyData);
     // $noteDiv.text(displayText);
     // $noteDiv.appendTo('.container-data');
@@ -99,13 +86,12 @@ $(document).ready(function(){
   // delete item
   $('.container-data').on('click', '.note', function(event){
     console.log(event);
-    // console.log('hello');
     var obj = JSON.parse(localStorage.getItem('data'));
-    var arr = event.currentTarget.innerText.split(' ');
-    var key = arr[arr.length - 1];
+    var key = event.currentTarget.innerText.split('');
+    var index = key.indexOf('|');
+    key = key.slice(index + 2).join('')
     var text = obj[key];
-    console.log(key);
-    // console.log(text);
+    console.log(event);
     $('.input-key').val(key);
     $('.note-content').text(text);
     // console.log(text);
