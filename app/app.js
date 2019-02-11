@@ -8,8 +8,9 @@ interact with localstorage
 $(document).ready(function(){
   // this is where we jquery
   //var keyData = 'ourKey'; // going to need to make this dynamic?
-    var dataObj = JSON.parse(localStorage.getItem('data'));
     // console.log(dataObj);
+  var reloadNotes = function() {
+    var dataObj = JSON.parse(localStorage.getItem('data'));
     $('.container-data').empty();
     for(var key in dataObj) {
       var $noteDiv = $('<div></div>');
@@ -21,6 +22,8 @@ $(document).ready(function(){
       $('.container-data').append($noteDiv)
       // $noteDiv.appendTo('.container-data');      
     }
+  }
+  reloadNotes();
 
   $('.btn-submit').on('click', function(e){
     console.log(e);
@@ -55,19 +58,20 @@ $(document).ready(function(){
     // <div class="display-data-item" data-keyValue="keyData">valueData</div>
     // if you use backticks ` you can use ${templateLiterals}
     // TODO make this vars make sense across the app
-    var dataObj = JSON.parse(localStorage.getItem('data'));
-    // console.log(dataObj);
-    $('.container-data').empty();
-    for(var key in dataObj) {
-      var $noteDiv = $('<div></div>');
-      $noteDiv.addClass('note');
-      $noteDiv.addClass(key);
-      var date = Date().split(' ').slice(0,3).join(' ');
-      $noteDiv.text(`${date} | ${key}`);
-      // console.log($noteDiv);
-      $('.container-data').append($noteDiv)
-      // $noteDiv.appendTo('.container-data');      
-    }
+    reloadNotes();
+    // var dataObj = JSON.parse(localStorage.getItem('data'));
+    // // console.log(dataObj);
+    // $('.container-data').empty();
+    // for(var key in dataObj) {
+    //   var $noteDiv = $('<div></div>');
+    //   $noteDiv.addClass('note');
+    //   $noteDiv.addClass(key);
+    //   var date = Date().split(' ').slice(0,3).join(' ');
+    //   $noteDiv.text(`${date} | ${key}`);
+    //   // console.log($noteDiv);
+    //   $('.container-data').append($noteDiv)
+    //   // $noteDiv.appendTo('.container-data');      
+    // }
     // $noteDiv.addClass(keyData);
     // $noteDiv.text(displayText);
     // $noteDiv.appendTo('.container-data');
@@ -115,13 +119,12 @@ $(document).ready(function(){
   
 
   $('.container-data').on('mouseover', '.note', function(event) {
-    console.log(event);
     var obj = JSON.parse(localStorage.getItem('data'));
     var arr = event.currentTarget.innerText.split(' ');
     var key = arr[arr.length - 1];
     var settings = {
       width: 600,
-      title: key
+      title: 'Title : ' + key
     }
     $('.popUp-dialogUI').html('');
     $('.popUp-dialogUI').html(obj[key]);
@@ -130,6 +133,16 @@ $(document).ready(function(){
 
   $('.container-data').on('mouseleave', '.note', function(event) {
     $('.popUp-dialogUI').dialog('close');
+  })
+
+  $('.btn-delete').on('click', function(event) {
+    var key = $('.input-key').val();
+    console.log(key);
+    var obj = JSON.parse(localStorage.getItem('data'));
+    delete obj[key];
+    obj = JSON.stringify(obj);
+    localStorage.setItem('data', obj); 
+    reloadNotes();   
   })
 
 
