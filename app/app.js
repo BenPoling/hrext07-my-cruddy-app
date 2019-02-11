@@ -128,5 +128,9 @@ $(document).ready(function(){
     $('.popUp-dialogUI').dialog(settings).dialog('open');
   })
 
+  $('.container-data').on('mouseleave', '.note', function(event) {
+    $('.popUp-dialogUI').dialog('close');
+  })
+
 
 });
