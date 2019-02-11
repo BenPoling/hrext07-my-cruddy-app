@@ -15,7 +15,8 @@ $(document).ready(function(){
       var $noteDiv = $('<div></div>');
       $noteDiv.addClass('note');
       $noteDiv.class = (key);
-      $noteDiv.text(key);
+      var date = Date().split(' ').slice(0,3).join(' ');
+      $noteDiv.text(`${date} | ${key}`);
       // console.log($noteDiv);
       $('.container-data').append($noteDiv)
       // $noteDiv.appendTo('.container-data');      
@@ -61,7 +62,8 @@ $(document).ready(function(){
       var $noteDiv = $('<div></div>');
       $noteDiv.addClass('note');
       $noteDiv.addClass(key);
-      $noteDiv.text(key);
+      var date = Date().split(' ').slice(0,3).join(' ');
+      $noteDiv.text(`${date} | ${key}`);
       // console.log($noteDiv);
       $('.container-data').append($noteDiv)
       // $noteDiv.appendTo('.container-data');      
@@ -95,8 +97,10 @@ $(document).ready(function(){
     console.log(event);
     // console.log('hello');
     var obj = JSON.parse(localStorage.getItem('data'));
-    var key = event.currentTarget.innerText;
+    var arr = event.currentTarget.innerText.split(' ');
+    var key = arr[arr.length - 1];
     var text = obj[key];
+    console.log(key);
     // console.log(text);
     $('.input-key').val(key);
     $('.note-content').text(text);
