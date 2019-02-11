@@ -10,10 +10,26 @@ $(document).ready(function(){
   //var keyData = 'ourKey'; // going to need to make this dynamic?
 
 
-  $('.btn-add').on('click', function(e){
+  $('.btn-submit').on('click', function(e){
     console.log(e);
     var keyData = $('.input-key').val();
-    var valueData = $('.input-value').val();
+    var valueData = $('.note-content').text();
+    if(localStorage.getItem('data') === null) {
+      var obj = {};
+      obj[keyData] = valueData;
+      obj = JSON.stringify(obj);
+      localStorage.setItem('data', obj);
+    } else if(JSON.parse(localStorage.getItem('data')).hasOwnProperty(keyData)) {
+      var obj = JSON.parse(localStorage.getItem('data'));
+      obj[keyData] = valueData;
+      obj = JSON.stringify(obj);
+      localStorage.setItem('data', obj);      
+    } else {
+      var obj = JSON.parse(localStorage.getItem('data'));
+      obj[keyData] = valueData;
+      obj = JSON.stringify(obj);
+      localStorage.setItem('data', obj);
+    }
     // write to db
     // localStorage.setItem(keyData, valueData);
     // read from db
@@ -37,9 +53,9 @@ $(document).ready(function(){
 
   $('.btn-submit').on('click', function(event) {
     // console.log($('.note-content').text());
-    var value = $('.note-content').text();
-    var key = localStorage.length + 1;
-    localStorage.setItem(key, value)
+    // var value = $('.note-content').text();
+    // var key = localStorage.length + 1;
+    // localStorage.setItem(key, value)
   })
 
 
