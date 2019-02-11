@@ -16,7 +16,6 @@ $(document).ready(function(){
       $noteDiv.addClass('note');
       $noteDiv.class = (key);
       $noteDiv.text(key);
-      console.log(dataObj[key])
       // console.log($noteDiv);
       $('.container-data').append($noteDiv)
       // $noteDiv.appendTo('.container-data');      
@@ -61,9 +60,8 @@ $(document).ready(function(){
     for(var key in dataObj) {
       var $noteDiv = $('<div></div>');
       $noteDiv.addClass('note');
-      $noteDiv.class = (key);
+      $noteDiv.addClass(key);
       $noteDiv.text(key);
-      console.log(dataObj[key])
       // console.log($noteDiv);
       $('.container-data').append($noteDiv)
       // $noteDiv.appendTo('.container-data');      
@@ -96,12 +94,13 @@ $(document).ready(function(){
   $('.container-data').on('click', '.note', function(event){
     console.log(event);
     // console.log('hello');
-    var text = localStorage.getItem(event.currentTarget.classList[1])
+    var obj = JSON.parse(localStorage.getItem('data'));
+    var key = event.currentTarget.innerText;
+    var text = obj[key];
     // console.log(text);
-    console.log(event.currentTarget.classList[1])
-    if(!text) {
-      $('.note-content').text(text);
-    }
+    $('.note-content').text(text);
+    // console.log(text);
+    // console.log(event.currentTarget.classList[1])
   });
   // delete all?
   $('.btn-clear').click(function(){
