@@ -75,13 +75,19 @@ $(document).ready(function(){
   });
 
   $('.container-data').on('click', '.note', function(event){
+    console.log(event);
     var obj = JSON.parse(localStorage.getItem('data'));
     var key = event.currentTarget.innerText.split('');
+    var topicKey = event.currentTarget.className.split(' ');
+    topicKey = topicKey[1];
     var index = key.indexOf('|');
     key = key.slice(index + 2).join('')
-    var text = obj[key];
+    var text = obj[topicKey][key];
+    console.log(key);
+    $('.topic-list-input').val(topicKey);
     $('.input-key').val(key);
     $('.note-content').text(text);
+    $('.popUp-dialogUI').dialog('close');
   });
   // delete all?
   $('.btn-clear').click(function(){
@@ -117,18 +123,45 @@ $(document).ready(function(){
     $('.popUp-dialogUI').dialog('close');
   })
 
-  
-  $('.container-data').on('mouseover', '.note', function(event) {
+  $('.container-data').on('click', '.topic', function(event) {
+    console.log(event);
     var obj = JSON.parse(localStorage.getItem('data'));
     var key = event.currentTarget.innerText.split('');
     var index = key.indexOf('|');
-    key = key.slice(index + 2).join('')
+    key = key.slice(index + 2).join('');
+    console.log(key);
+    $('.container-data').empty();
+    for(var prop in obj[key]) {
+      var $noteDiv = $('<div></div>');
+      $noteDiv.addClass('note');
+      $noteDiv.addClass(key);
+      // $noteDiv.class = (key);
+      var date = Date().split(' ').slice(0,3).join(' ');
+      $noteDiv.text(`${date} | ${prop}`);
+      $('.container-data').append($noteDiv)     
+    }
+    // $('.popUp-dialogUI').dialog('close');
+  })  
+
+  
+  $('.container-data').on('mouseover', '.note', function(event) {
+    // console.log(event);
+    var obj = JSON.parse(localStorage.getItem('data'));
+    // console.log(obj);
+    var noteKey = event.currentTarget.innerText.split('');
+    var key = event.currentTarget.className.split(' ');
+    var index = noteKey.indexOf('|');
+    noteKey = noteKey.slice(index + 2).join('')
+    key = key[1];
     var settings = {
       width: 600,
-      title: 'Title : ' + key
+      title: 'Title : ' + noteKey
     }
+    // console.log('key', key);
+    // console.log('note key:', noteKey)
+    // console.log(obj[key][noteKey]);
     $('.popUp-dialogUI').html('');
-    $('.popUp-dialogUI').html(obj[key]);
+    $('.popUp-dialogUI').html(obj[key][noteKey]);
     $('.popUp-dialogUI').dialog(settings).dialog('open');
   })
 
