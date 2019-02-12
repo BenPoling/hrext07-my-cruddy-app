@@ -16,8 +16,7 @@ $(document).ready(function(){
       var $noteDiv = $('<div></div>');
       $noteDiv.addClass('note');
       $noteDiv.addClass(topicKey);
-      var date = Date().split(' ').slice(0,3).join(' ');
-      $noteDiv.text(`${date} | ${key}`);
+      $noteDiv.text(`Note | ${key}`);
       $('.container-data').append($noteDiv)     
     }
   }
@@ -27,23 +26,12 @@ $(document).ready(function(){
     var dataObj = JSON.parse(localStorage.getItem('data'));
     for(var key in dataObj) {
       var $option = `<option value=${key}>`;
+
       $($option).appendTo('#topic-list')
     }
   }
   reloadTopicDropDown();
 
-  // var reloadNotes = function() {
-  //   var dataObj = JSON.parse(localStorage.getItem('data'));
-  //   $('.container-data').empty();
-  //   for(var key in dataObj) {
-  //     var $noteDiv = $('<div></div>');
-  //     $noteDiv.addClass('note');
-  //     $noteDiv.class = (key);
-  //     var date = Date().split(' ').slice(0,3).join(' ');
-  //     $noteDiv.text(`${date} | ${key}`);
-  //     $('.container-data').append($noteDiv)     
-  //   }
-  // }
 
   var reloadTopics = function() {
     var dataObj = JSON.parse(localStorage.getItem('data'));
@@ -52,8 +40,7 @@ $(document).ready(function(){
       var $noteDiv = $('<div></div>');
       $noteDiv.addClass('topic');
       $noteDiv.class = (key);
-      var date = Date().split(' ').slice(0,3).join(' ');
-      $noteDiv.text(`${date} | ${key}`);
+      $noteDiv.text(`Topic | ${key}`);
       $('.container-data').append($noteDiv)     
     }
   }
@@ -103,7 +90,7 @@ $(document).ready(function(){
       $('.topic-list-input').val('');
     }
     reloadTopicDropDown();
-    reloadTopics();
+    reloadNotes(topic);
     //<option value="random">
     // $('.input-key').val('');
     // $('.note-content').html('');
@@ -159,7 +146,6 @@ $(document).ready(function(){
   })
 
   $('.container-data').on('click', '.topic', function(event) {
-    // console.log(event);
     var obj = JSON.parse(localStorage.getItem('data'));
     var key = event.currentTarget.innerText.split('');
     var index = key.indexOf('|');
@@ -170,20 +156,16 @@ $(document).ready(function(){
       var $noteDiv = $('<div></div>');
       $noteDiv.addClass('note');
       $noteDiv.addClass(key);
-      // $noteDiv.class = (key);
-      var date = Date().split(' ').slice(0,3).join(' ');
-      $noteDiv.text(`${date} | ${prop}`);
+      $noteDiv.text(`Note | ${prop}`);
       $('.container-data').append($noteDiv)     
     }
     $('.topic-list-input').val(key);
-    // $('.popUp-dialogUI').dialog('close');
+    $('.popUp-dialogUI').dialog('close');
   })  
 
   
   $('.container-data').on('mouseover', '.note', function(event) {
-    // console.log(event);
     var obj = JSON.parse(localStorage.getItem('data'));
-    // console.log(obj);
     var noteKey = event.currentTarget.innerText.split('');
     var key = event.currentTarget.className.split(' ');
     var index = noteKey.indexOf('|');
@@ -221,6 +203,10 @@ $(document).ready(function(){
   $('.btn-clearInput').on('click', function(event) {
     $('.input-key').val('');
     $('.note-content').html('');
+  })
+
+  $('.btn-topics').on('click', function(event) {
+    reloadTopics();
   })
 
 });
