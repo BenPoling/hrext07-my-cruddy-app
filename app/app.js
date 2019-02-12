@@ -9,6 +9,15 @@ $(document).ready(function(){
   // this is where we jquery
   //var keyData = 'ourKey'; // going to need to make this dynamic?
   
+  var reloadTopicDropDown = function() {
+    $('#topic-list').empty();
+    var dataObj = JSON.parse(localStorage.getItem('data'));
+    for(var key in dataObj) {
+      var $option = `<option value=${key}>`;
+      $($option).appendTo('#topic-list')
+    }
+  }
+  reloadTopicDropDown();
 
   var reloadTopics = function() {
     var dataObj = JSON.parse(localStorage.getItem('data'));
@@ -67,9 +76,9 @@ $(document).ready(function(){
       $('.note-content').html('');
       $('.topic-list-input').val('');
     }
-    
+    reloadTopicDropDown();
     reloadTopics();
-
+    //<option value="random">
     // $('.input-key').val('');
     // $('.note-content').html('');
   });
