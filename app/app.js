@@ -34,22 +34,28 @@ $(document).ready(function(){
       obj[keyData] = valueData;
       obj = JSON.stringify(obj);
       localStorage.setItem('data', obj);
+      $('.input-key').val('');
+      $('.note-content').html('');
     } else if(JSON.parse(localStorage.getItem('data')).hasOwnProperty(keyData)) {
       var obj = JSON.parse(localStorage.getItem('data'));
       obj[keyData] = valueData;
       obj = JSON.stringify(obj);
-      localStorage.setItem('data', obj);      
+      localStorage.setItem('data', obj);
+      $('.input-key').val('');
+      $('.note-content').html('');      
     } else {
       var obj = JSON.parse(localStorage.getItem('data'));
       obj[keyData] = valueData;
       obj = JSON.stringify(obj);
       localStorage.setItem('data', obj);
+      $('.input-key').val('');
+      $('.note-content').html('');
     }
     
     reloadNotes();
 
-    $('.input-key').val('');
-    $('.note-content').html('');
+    // $('.input-key').val('');
+    // $('.note-content').html('');
   });
 
   $('.container-data').on('click', '.note', function(event){
