@@ -46,6 +46,7 @@ header {
 	border
 	border-color: black;
 	outline: none;
+	overflow: hidden;
 }
 
 .btn-clear {
