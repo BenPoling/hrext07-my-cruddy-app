@@ -1,12 +1,13 @@
-/*.container-data {
-	display: flex;
-	flex-direction: column;
-	margin: auto;
-}*/
+body {
+	background-color: #1E90FF;
+}
 
 header {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 30px;
 }
 
 .container-data {
@@ -27,6 +28,7 @@ header {
 	display: flex;
 	margin: auto;
     overflow: scroll;
+    background-color: white;
 }
 
 .ui-dialog-titlebar-close{
@@ -35,6 +37,15 @@ header {
 
 .ui-dialog-titlebar {
 	background-color: white;
+	border-bottom: solid;
+	border-color: black;
+}
+
+.ui-dialog {
+	border: solid;
+	border
+	border-color: black;
+	outline: none;
 }
 
 .btn-clear {
