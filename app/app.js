@@ -8,6 +8,19 @@ interact with localstorage
 $(document).ready(function(){
   // this is where we jquery
   //var keyData = 'ourKey'; // going to need to make this dynamic?
+
+  var reloadNotes = function(topicKey) {
+  var dataObj = JSON.parse(localStorage.getItem('data'));
+  $('.container-data').empty();
+    for(var key in dataObj[topicKey]) {
+      var $noteDiv = $('<div></div>');
+      $noteDiv.addClass('note');
+      $noteDiv.addClass(topicKey);
+      var date = Date().split(' ').slice(0,3).join(' ');
+      $noteDiv.text(`${date} | ${key}`);
+      $('.container-data').append($noteDiv)     
+    }
+  }
   
   var reloadTopicDropDown = function() {
     $('#topic-list').empty();
@@ -18,6 +31,19 @@ $(document).ready(function(){
     }
   }
   reloadTopicDropDown();
+
+  // var reloadNotes = function() {
+  //   var dataObj = JSON.parse(localStorage.getItem('data'));
+  //   $('.container-data').empty();
+  //   for(var key in dataObj) {
+  //     var $noteDiv = $('<div></div>');
+  //     $noteDiv.addClass('note');
+  //     $noteDiv.class = (key);
+  //     var date = Date().split(' ').slice(0,3).join(' ');
+  //     $noteDiv.text(`${date} | ${key}`);
+  //     $('.container-data').append($noteDiv)     
+  //   }
+  // }
 
   var reloadTopics = function() {
     var dataObj = JSON.parse(localStorage.getItem('data'));
@@ -133,12 +159,12 @@ $(document).ready(function(){
   })
 
   $('.container-data').on('click', '.topic', function(event) {
-    console.log(event);
+    // console.log(event);
     var obj = JSON.parse(localStorage.getItem('data'));
     var key = event.currentTarget.innerText.split('');
     var index = key.indexOf('|');
     key = key.slice(index + 2).join('');
-    console.log(key);
+    console.log('key', key);
     $('.container-data').empty();
     for(var prop in obj[key]) {
       var $noteDiv = $('<div></div>');
@@ -149,6 +175,7 @@ $(document).ready(function(){
       $noteDiv.text(`${date} | ${prop}`);
       $('.container-data').append($noteDiv)     
     }
+    $('.topic-list-input').val(key);
     // $('.popUp-dialogUI').dialog('close');
   })  
 
@@ -166,9 +193,9 @@ $(document).ready(function(){
       width: 600,
       title: 'Title : ' + noteKey
     }
-    // console.log('key', key);
-    // console.log('note key:', noteKey)
-    // console.log(obj[key][noteKey]);
+    console.log('key', key);
+    console.log('note key:', noteKey)
+    console.log(noteKey.length);
     $('.popUp-dialogUI').html('');
     $('.popUp-dialogUI').html(obj[key][noteKey]);
     $('.popUp-dialogUI').dialog(settings).dialog('open');
@@ -178,15 +205,17 @@ $(document).ready(function(){
     $('.popUp-dialogUI').dialog('close');
   })
 
+
   $('.btn-delete').on('click', function(event) {
+    var topicKey = $('.topic-list-input').val();
     var key = $('.input-key').val();
     var obj = JSON.parse(localStorage.getItem('data'));
-    delete obj[key];
+    delete obj[topicKey][key];
     obj = JSON.stringify(obj);
     localStorage.setItem('data', obj); 
     $('.input-key').val('');
     $('.note-content').html('');
-    reloadTopics();   
+    reloadNotes(topicKey);  
   })
 
   $('.btn-clearInput').on('click', function(event) {
