@@ -13,6 +13,8 @@ Create Read Update and Delete framework using JS
 
 ### Advanced Reqs
 - [ ] Item that I added goes here...
+- [ ] make input field for topics
+- [ ] make topic selector drop down
 
 content editable for div- https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Editable_content
 dialog for mouse over/have to import jQuery UI also to use this-https://jqueryui.com/dialog/
