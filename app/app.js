@@ -10,19 +10,19 @@ $(document).ready(function(){
   //var keyData = 'ourKey'; // going to need to make this dynamic?
   
 
-  var reloadNotes = function() {
+  var reloadTopics = function() {
     var dataObj = JSON.parse(localStorage.getItem('data'));
     $('.container-data').empty();
     for(var key in dataObj) {
       var $noteDiv = $('<div></div>');
-      $noteDiv.addClass('note');
+      $noteDiv.addClass('topic');
       $noteDiv.class = (key);
       var date = Date().split(' ').slice(0,3).join(' ');
       $noteDiv.text(`${date} | ${key}`);
       $('.container-data').append($noteDiv)     
     }
   }
-  reloadNotes();
+  reloadTopics();
 
   $('.btn-submit').on('click', function(e){
     var topic = $('.topic-list-input').val();
@@ -68,7 +68,7 @@ $(document).ready(function(){
       $('.topic-list-input').val('');
     }
     
-    reloadNotes();
+    reloadTopics();
 
     // $('.input-key').val('');
     // $('.note-content').html('');
@@ -90,6 +90,33 @@ $(document).ready(function(){
     $('.input-key').val('');
     $('.note-content').html('');
   });
+
+  $('.container-data').on('mouseover', '.topic', function(event) {
+    // console.log(event);
+    var obj = JSON.parse(localStorage.getItem('data'));
+    var key = event.currentTarget.innerText.split('');
+    var index = key.indexOf('|');
+    key = key.slice(index + 2).join('')
+    var str = "-"
+    // str += '\n';
+    for(var prop in obj[key]) {
+      str += '\n';
+      str += prop;
+    }
+    console.log(str);
+    var settings = {
+      width: 600,
+      title: 'Topic : ' + key
+    }
+    $('.popUp-dialogUI').html('');
+    $('.popUp-dialogUI').html(str);
+    $('.popUp-dialogUI').dialog(settings).dialog('open');
+  })
+
+  $('.container-data').on('mouseleave', '.topic', function(event) {
+    $('.popUp-dialogUI').dialog('close');
+  })
+
   
   $('.container-data').on('mouseover', '.note', function(event) {
     var obj = JSON.parse(localStorage.getItem('data'));
@@ -117,7 +144,7 @@ $(document).ready(function(){
     localStorage.setItem('data', obj); 
     $('.input-key').val('');
     $('.note-content').html('');
-    reloadNotes();   
+    reloadTopics();   
   })
 
   $('.btn-clearInput').on('click', function(event) {
