@@ -29,11 +29,16 @@ container for the response-feedback (start with alert)
 <div class="container-main">
   <header>My Cruddy Note Taking App</header>
   <div class="container-form">
+    <input list='topic-list' class='topic-list-input' name='topic-choice' placeholder="Topic"></input>
+    <datalist id='topic-list'>
+      <option value="random">
+      
+    </datalist>
     <input type="text" class="input-key" placeholder="Title">
     <button class="btn-submit">Save</button>
     <button class='btn-clearInput'>Clear</button>
     <button class="btn-delete">Delete</button>   
-    <button class="btn-clear">DANGER ZONE(CLEAR ALL)</button>
+    <button class="btn-clear">DANGER ZONE(Delete ALL)</button>
   </div>
   <div class="container-data"></div>
   </div>
