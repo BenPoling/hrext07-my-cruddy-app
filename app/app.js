@@ -69,16 +69,6 @@ $(document).ready(function(){
   });
 
 
-  $('.btn-submit').on('click', function(event) {
-    // console.log($('.note-content').text());
-    // var value = $('.note-content').text();
-    // var key = localStorage.length + 1;
-    // localStorage.setItem(key, value)
-  })
-
-
-
-
   // update db
     // need to expand when  more than 1 item is added
 
@@ -101,13 +91,16 @@ $(document).ready(function(){
   $('.btn-clear').click(function(){
     localStorage.clear();
     $('.container-data').text('');
+    $('.input-key').val('');
+    $('.note-content').html('');
   });
   
 
   $('.container-data').on('mouseover', '.note', function(event) {
     var obj = JSON.parse(localStorage.getItem('data'));
-    var arr = event.currentTarget.innerText.split(' ');
-    var key = arr[arr.length - 1];
+    var key = event.currentTarget.innerText.split('');
+    var index = key.indexOf('|');
+    key = key.slice(index + 2).join('')
     var settings = {
       width: 600,
       title: 'Title : ' + key
@@ -128,8 +121,16 @@ $(document).ready(function(){
     delete obj[key];
     obj = JSON.stringify(obj);
     localStorage.setItem('data', obj); 
+    $('.input-key').val('');
+    $('.note-content').html('');
     reloadNotes();   
   })
+
+  $('.btn-clearInput').on('click', function(event) {
+    $('.input-key').val('');
+    $('.note-content').html('');
+  })
+
 
 
 });
