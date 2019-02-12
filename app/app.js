@@ -8,6 +8,8 @@ interact with localstorage
 $(document).ready(function(){
   // this is where we jquery
   //var keyData = 'ourKey'; // going to need to make this dynamic?
+  
+
   var reloadNotes = function() {
     var dataObj = JSON.parse(localStorage.getItem('data'));
     $('.container-data').empty();
@@ -23,33 +25,47 @@ $(document).ready(function(){
   reloadNotes();
 
   $('.btn-submit').on('click', function(e){
+    var topic = $('.topic-list-input').val();
+    // console.log(topic);
     var keyData = $('.input-key').val();
     var valueData = $('.note-content').text();
     if(keyData === '') {
       alert('No title!');
     } else if(valueData === '') {
       alert('No note content!');t
+    } else if(topic === '') {
+      alert('No topic!');
     } else if(localStorage.getItem('data') === null) {
+
+      // {random: {title: note, title: note}, otherTopic: {title: note, title: note}};
       var obj = {};
-      obj[keyData] = valueData;
+      var noteObj = {};
+      noteObj[keyData] = valueData;
+      obj[topic] = noteObj;
+      // obj[keyData] = valueData;
       obj = JSON.stringify(obj);
       localStorage.setItem('data', obj);
       $('.input-key').val('');
       $('.note-content').html('');
-    } else if(JSON.parse(localStorage.getItem('data')).hasOwnProperty(keyData)) {
+      $('.topic-list-input').val('');
+    } else if(JSON.parse(localStorage.getItem('data')).hasOwnProperty(topic)) {
       var obj = JSON.parse(localStorage.getItem('data'));
-      obj[keyData] = valueData;
+      obj[topic][keyData] = valueData;
       obj = JSON.stringify(obj);
       localStorage.setItem('data', obj);
       $('.input-key').val('');
-      $('.note-content').html('');      
+      $('.note-content').html('');  
+      $('.topic-list-input').val('');    
     } else {
       var obj = JSON.parse(localStorage.getItem('data'));
-      obj[keyData] = valueData;
+      var noteObj = {};
+      noteObj[keyData] = valueData;
+      obj[topic] = noteObj;
       obj = JSON.stringify(obj);
       localStorage.setItem('data', obj);
       $('.input-key').val('');
       $('.note-content').html('');
+      $('.topic-list-input').val('');
     }
     
     reloadNotes();
