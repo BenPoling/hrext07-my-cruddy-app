@@ -27,7 +27,6 @@ header {
 	display: flex;
 	margin: auto;
     overflow: scroll;
-/*    text-overflow: ellipsis;*/
 }
 
 .ui-dialog-titlebar-close{
@@ -50,7 +49,7 @@ header {
 }
 
 .btn-delete {
-	margin-right: 10px;
+	margin-right: 20px;
 	background-color: orange;
 }
 
