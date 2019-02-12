@@ -1,22 +1,68 @@
+/*.container-data {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+}*/
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.container-data {
+	display: flex;
+	flex-direction: column-reverse;
+	max-width: 330px;
+}
+
+.container-form {
+	display: flex;
+	justify-content: center;
+}
+
 .note-content {
 	max-width: 800px;
 	border-style: solid;
 	border-color: black;
-/*	display: flex;*/
+	display: flex;
+	margin: auto;
+    overflow: scroll;
+/*    text-overflow: ellipsis;*/
 }
 
 .ui-dialog-titlebar-close{
     display: none;
 }
 
+.ui-dialog-titlebar {
+	background-color: white;
+}
+
 .btn-clear {
+/*	margin-left: 10px*/
 	background-color: red;
 }
 
 .btn-submit {
 	background-color: green;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 .btn-delete {
+	margin-right: 10px;
 	background-color: orange;
+}
+
+.popUp-dialogUI {
+	opacity: 1;
+	background-color: white;
+}
+
+.note {
+	margin-bottom: 10px;
+}
+
+.btn-clearInput {
+	margin-right: 10px;
 }
