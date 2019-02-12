@@ -20,12 +20,12 @@ dialog for mouse over/have to import jQuery UI also to use this-https://jqueryui
 - [ ] make it into a note taking app
 - [ ] have the delete button be a trash can
 - [ ] submit button just a square + button
-- [ ] have pop up window/or it toggle from side or bottom when clicked that you can edit
-- [ ] have uneditable pop up window come up on mouse over(jQuery dialog)-hide this div
-- [ ] have update button
-- [ ] make save to local storage on submit/the title is the key
+- [X] have pop up window/or it toggle from side or bottom when clicked that you can edit-puts text back into DIV
+- [X] have uneditable pop up window come up on mouse over(jQuery dialog)-hide this div
+- [X] have update button-Submit updates
+- [X] make save to local storage on submit/the title is the key
 
 - [ ] make the closed div look like a folder
 - [ ] hard code a user name and pass word to access the notes
-- [ ] date and time stamp on the notes
-- [ ] have box to check off next to each note so you can specifically delete multiple notes
+- [X] date and time stamp on the notes
+- [X] have box to check off next to each note so you can specifically delete multiple notes-Did this on when you click the DIV
