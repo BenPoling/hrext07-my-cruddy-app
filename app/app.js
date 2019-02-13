@@ -77,19 +77,29 @@ $(document).ready(function(){
     reloadNotes(topic);
   });
 
-  $('.container-data').on('click', '.note', function(event){
+  $('.btn-delete').on('click', function(event) {
+    var topicKey = $('.topic-list-input').val();
+    var key = $('.input-key').val();
     var obj = JSON.parse(localStorage.getItem('data'));
-    var key = event.currentTarget.innerText.split('');
-    var topicKey = event.currentTarget.className.split(' ');
-    topicKey = topicKey[1];
-    var index = key.indexOf('|');
-    key = key.slice(index + 2).join('')
-    var text = obj[topicKey][key];
-    $('.topic-list-input').val(topicKey);
-    $('.input-key').val(key);
-    $('.note-content').text(text);
-    $('.popUp-dialogUI').dialog('close');
-  });
+    delete obj[topicKey][key];
+    obj = JSON.stringify(obj);
+    localStorage.setItem('data', obj); 
+    $('.input-key').val('');
+    $('.note-content').html('');
+    reloadNotes(topicKey);  
+  })
+
+  $('.btn-clearInput').on('click', function(event) {
+    $('.input-key').val('');
+    $('.note-content').html('');
+  })
+
+  $('.btn-topics').on('click', function(event) {
+    reloadTopics();
+    $('.topic-list-input').val('');
+    $('.input-key').val('');
+    $('.note-content').html('');
+  })
 
   $('.btn-clear').click(function(){
     var topic = $('.topic-list-input').val();
@@ -136,7 +146,21 @@ $(document).ready(function(){
     reloadNotes(key);
     $('.topic-list-input').val(key);
     $('.popUp-dialogUI').dialog('close');
-  })  
+  }) 
+
+  $('.container-data').on('click', '.note', function(event){
+    var obj = JSON.parse(localStorage.getItem('data'));
+    var key = event.currentTarget.innerText.split('');
+    var topicKey = event.currentTarget.className.split(' ');
+    topicKey = topicKey[1];
+    var index = key.indexOf('|');
+    key = key.slice(index + 2).join('')
+    var text = obj[topicKey][key];
+    $('.topic-list-input').val(topicKey);
+    $('.input-key').val(key);
+    $('.note-content').text(text);
+    $('.popUp-dialogUI').dialog('close');
+  }); 
 
   $('.container-data').on('mouseover', '.note', function(event) {
     var obj = JSON.parse(localStorage.getItem('data'));
@@ -156,30 +180,6 @@ $(document).ready(function(){
 
   $('.container-data').on('mouseleave', '.note', function(event) {
     $('.popUp-dialogUI').dialog('close');
-  })
-
-  $('.btn-delete').on('click', function(event) {
-    var topicKey = $('.topic-list-input').val();
-    var key = $('.input-key').val();
-    var obj = JSON.parse(localStorage.getItem('data'));
-    delete obj[topicKey][key];
-    obj = JSON.stringify(obj);
-    localStorage.setItem('data', obj); 
-    $('.input-key').val('');
-    $('.note-content').html('');
-    reloadNotes(topicKey);  
-  })
-
-  $('.btn-clearInput').on('click', function(event) {
-    $('.input-key').val('');
-    $('.note-content').html('');
-  })
-
-  $('.btn-topics').on('click', function(event) {
-    reloadTopics();
-    $('.topic-list-input').val('');
-    $('.input-key').val('');
-    $('.note-content').html('');
   })
 
 });
