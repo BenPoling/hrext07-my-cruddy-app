@@ -48,3 +48,13 @@ a {
 .input-toDo {
 	width: 250px;
 }
+
+.container-toDoList {
+	display: flex;
+	justify-content: center;
+}
+
+/*.test {
+	display: flex;
+	justify-content: center;
+}*/
