@@ -15,7 +15,6 @@ header {
   margin-top: 10px;
   font-size: 30px;
   font-family: Luminari;
-/*  background-color: white;*/
 }
 
 .title {
@@ -45,6 +44,10 @@ a {
 	font-size: 20px;
 }
 
+.btn-clear {
+	font-size: 20px;
+}
+
 .input-toDo {
 	width: 250px;
 }
@@ -55,8 +58,3 @@ a {
 	flex-direction: column;
 	margin-left: 500px;
 }
-
-/*.test {
-	display: flex;
-	justify-content: center;
-}*/
