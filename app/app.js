@@ -13,7 +13,7 @@ $(document).ready(function(){
   var dataObj = JSON.parse(localStorage.getItem('data'));
   $('.container-data').empty();
     for(var key in dataObj[topicKey]) {
-      var $noteDiv = $('<div></div>');
+      var $noteDiv = $('<button></button>');
       $noteDiv.addClass('note');
       $noteDiv.addClass(topicKey);
       $noteDiv.text(`Note | ${key}`);
@@ -26,7 +26,6 @@ $(document).ready(function(){
     var dataObj = JSON.parse(localStorage.getItem('data'));
     for(var key in dataObj) {
       var $option = `<option value=${key}>`;
-
       $($option).appendTo('#topic-list')
     }
   }
@@ -37,7 +36,7 @@ $(document).ready(function(){
     var dataObj = JSON.parse(localStorage.getItem('data'));
     $('.container-data').empty();
     for(var key in dataObj) {
-      var $noteDiv = $('<div></div>');
+      var $noteDiv = $('<button></button>');
       $noteDiv.addClass('topic');
       $noteDiv.class = (key);
       $noteDiv.text(`Topic | ${key}`);
@@ -48,7 +47,6 @@ $(document).ready(function(){
 
   $('.btn-submit').on('click', function(e){
     var topic = $('.topic-list-input').val();
-    // console.log(topic);
     var keyData = $('.input-key').val();
     var valueData = $('.note-content').text();
     if(keyData === '') {
@@ -67,17 +65,17 @@ $(document).ready(function(){
       // obj[keyData] = valueData;
       obj = JSON.stringify(obj);
       localStorage.setItem('data', obj);
-      $('.input-key').val('');
-      $('.note-content').html('');
-      $('.topic-list-input').val('');
+      // $('.input-key').val('');
+      // $('.note-content').html('');
+      // $('.topic-list-input').val('');
     } else if(JSON.parse(localStorage.getItem('data')).hasOwnProperty(topic)) {
       var obj = JSON.parse(localStorage.getItem('data'));
       obj[topic][keyData] = valueData;
       obj = JSON.stringify(obj);
       localStorage.setItem('data', obj);
-      $('.input-key').val('');
-      $('.note-content').html('');  
-      $('.topic-list-input').val('');    
+      // $('.input-key').val('');
+      // $('.note-content').html('');  
+      // $('.topic-list-input').val('');    
     } else {
       var obj = JSON.parse(localStorage.getItem('data'));
       var noteObj = {};
@@ -85,9 +83,9 @@ $(document).ready(function(){
       obj[topic] = noteObj;
       obj = JSON.stringify(obj);
       localStorage.setItem('data', obj);
-      $('.input-key').val('');
-      $('.note-content').html('');
-      $('.topic-list-input').val('');
+      // $('.input-key').val('');
+      // $('.note-content').html('');
+      // $('.topic-list-input').val('');
     }
     reloadTopicDropDown();
     reloadNotes(topic);
@@ -97,7 +95,6 @@ $(document).ready(function(){
   });
 
   $('.container-data').on('click', '.note', function(event){
-    console.log(event);
     var obj = JSON.parse(localStorage.getItem('data'));
     var key = event.currentTarget.innerText.split('');
     var topicKey = event.currentTarget.className.split(' ');
@@ -105,7 +102,6 @@ $(document).ready(function(){
     var index = key.indexOf('|');
     key = key.slice(index + 2).join('')
     var text = obj[topicKey][key];
-    console.log(key);
     $('.topic-list-input').val(topicKey);
     $('.input-key').val(key);
     $('.note-content').text(text);
@@ -113,25 +109,32 @@ $(document).ready(function(){
   });
   // delete all?
   $('.btn-clear').click(function(){
-    localStorage.clear();
-    $('.container-data').text('');
+    var topic = $('.topic-list-input').val();
+    var obj = JSON.parse(localStorage.getItem('data'));
+    delete obj[topic];
+    obj = JSON.stringify(obj);
+    localStorage.setItem('data', obj)
+    reloadTopics();
+    // localStorage.clear();
+    // $('.container-data').text('');
+    $('.topic-list-input').val('');
     $('.input-key').val('');
     $('.note-content').html('');
   });
 
   $('.container-data').on('mouseover', '.topic', function(event) {
-    // console.log(event);
     var obj = JSON.parse(localStorage.getItem('data'));
     var key = event.currentTarget.innerText.split('');
     var index = key.indexOf('|');
     key = key.slice(index + 2).join('')
-    var str = "-"
+    var str = ""
     // str += '\n';
     for(var prop in obj[key]) {
       str += '\n';
+      str += '-';
       str += prop;
+      str += '\n';
     }
-    console.log(str);
     var settings = {
       width: 600,
       title: 'Topic : ' + key
@@ -150,10 +153,9 @@ $(document).ready(function(){
     var key = event.currentTarget.innerText.split('');
     var index = key.indexOf('|');
     key = key.slice(index + 2).join('');
-    console.log('key', key);
     $('.container-data').empty();
     for(var prop in obj[key]) {
-      var $noteDiv = $('<div></div>');
+      var $noteDiv = $('<button></button>');
       $noteDiv.addClass('note');
       $noteDiv.addClass(key);
       $noteDiv.text(`Note | ${prop}`);
@@ -175,9 +177,6 @@ $(document).ready(function(){
       width: 600,
       title: 'Title : ' + noteKey
     }
-    console.log('key', key);
-    console.log('note key:', noteKey)
-    console.log(noteKey.length);
     $('.popUp-dialogUI').html('');
     $('.popUp-dialogUI').html(obj[key][noteKey]);
     $('.popUp-dialogUI').dialog(settings).dialog('open');
@@ -207,6 +206,9 @@ $(document).ready(function(){
 
   $('.btn-topics').on('click', function(event) {
     reloadTopics();
+    $('.topic-list-input').val('');
+    $('.input-key').val('');
+    $('.note-content').html('');
   })
 
 });
