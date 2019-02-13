@@ -119,3 +119,17 @@ header {
 	margin-right: 10px;
 	background-color: grey;
 }
+
+a {
+	color: black;
+}
+
+.link-ToDo {
+	display: flex;
+	justify-content: center;
+	background-color: grey;
+	max-width: 215px;
+	margin: auto;
+	margin-bottom: 35px;
+	font-family: Luminari;
+}
