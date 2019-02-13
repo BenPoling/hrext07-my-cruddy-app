@@ -1,5 +1,17 @@
+html, body {
+	height: 100%;
+}
+
 body {
-	background-color: #1E90FF;
+	background-image: url(img287.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.btn-div {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
 }
 
 header {
@@ -8,11 +20,19 @@ header {
   margin-bottom: 10px;
   margin-top: 10px;
   font-size: 30px;
+  font-family: Luminari;
+/*  background-color: white;*/
+}
+
+.title {
+	background-color: grey;
 }
 
 .container-data {
 	display: flex;
 	flex-direction: column-reverse;
+/*	justify-content: center;
+	align-items: center;*/
 	max-width: 330px;
 }
 
@@ -28,7 +48,8 @@ header {
 	display: flex;
 	margin: auto;
     overflow: scroll;
-    background-color: white;
+    background-color: grey;
+    outline: none;
 }
 
 .ui-dialog-titlebar-close{
@@ -67,15 +88,26 @@ header {
 
 .popUp-dialogUI {
 	opacity: 1;
-	background-color: white;
+	background-color: grey;
+}
+
+.topic {
+	margin-bottom: 10px;
+	width: 200px;
+	display: flex;
+	justify-content: center;
+	background-color: grey;
 }
 
 .note {
 	margin-bottom: 10px;
+	width: 200px;
+	background-color: grey;
 }
 
 .btn-clearInput {
 	margin-right: 10px;
+	width: 50px;
 }
 
 .topic-list-input {
@@ -84,4 +116,5 @@ header {
 
 .btn-topics {
 	margin-right: 10px;
+	background-color: grey;
 }
