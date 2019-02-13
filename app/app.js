@@ -90,6 +90,7 @@ $(document).ready(function(){
   })
 
   $('.btn-clearInput').on('click', function(event) {
+    $('.topic-list-input').val('');
     $('.input-key').val('');
     $('.note-content').html('');
   })
