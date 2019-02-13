@@ -6,8 +6,6 @@ interact with localstorage
  */
 
 $(document).ready(function(){
-  // this is where we jquery
-  //var keyData = 'ourKey'; // going to need to make this dynamic?
 
   var reloadNotes = function(topicKey) {
   var dataObj = JSON.parse(localStorage.getItem('data'));
@@ -56,26 +54,17 @@ $(document).ready(function(){
     } else if(topic === '') {
       alert('No topic!');
     } else if(localStorage.getItem('data') === null) {
-
-      // {random: {title: note, title: note}, otherTopic: {title: note, title: note}};
       var obj = {};
       var noteObj = {};
       noteObj[keyData] = valueData;
       obj[topic] = noteObj;
-      // obj[keyData] = valueData;
       obj = JSON.stringify(obj);
       localStorage.setItem('data', obj);
-      // $('.input-key').val('');
-      // $('.note-content').html('');
-      // $('.topic-list-input').val('');
     } else if(JSON.parse(localStorage.getItem('data')).hasOwnProperty(topic)) {
       var obj = JSON.parse(localStorage.getItem('data'));
       obj[topic][keyData] = valueData;
       obj = JSON.stringify(obj);
-      localStorage.setItem('data', obj);
-      // $('.input-key').val('');
-      // $('.note-content').html('');  
-      // $('.topic-list-input').val('');    
+      localStorage.setItem('data', obj);  
     } else {
       var obj = JSON.parse(localStorage.getItem('data'));
       var noteObj = {};
@@ -83,15 +72,9 @@ $(document).ready(function(){
       obj[topic] = noteObj;
       obj = JSON.stringify(obj);
       localStorage.setItem('data', obj);
-      // $('.input-key').val('');
-      // $('.note-content').html('');
-      // $('.topic-list-input').val('');
     }
     reloadTopicDropDown();
     reloadNotes(topic);
-    //<option value="random">
-    // $('.input-key').val('');
-    // $('.note-content').html('');
   });
 
   $('.container-data').on('click', '.note', function(event){
@@ -107,7 +90,7 @@ $(document).ready(function(){
     $('.note-content').text(text);
     $('.popUp-dialogUI').dialog('close');
   });
-  // delete all?
+
   $('.btn-clear').click(function(){
     var topic = $('.topic-list-input').val();
     var obj = JSON.parse(localStorage.getItem('data'));
@@ -116,8 +99,6 @@ $(document).ready(function(){
     localStorage.setItem('data', obj)
     reloadTopics();
     reloadTopicDropDown();
-    // localStorage.clear();
-    // $('.container-data').text('');
     $('.topic-list-input').val('');
     $('.input-key').val('');
     $('.note-content').html('');
@@ -129,7 +110,6 @@ $(document).ready(function(){
     var index = key.indexOf('|');
     key = key.slice(index + 2).join('')
     var str = ""
-    // str += '\n';
     for(var prop in obj[key]) {
       str += '\n';
       str += '-';
@@ -158,7 +138,6 @@ $(document).ready(function(){
     $('.popUp-dialogUI').dialog('close');
   })  
 
-  
   $('.container-data').on('mouseover', '.note', function(event) {
     var obj = JSON.parse(localStorage.getItem('data'));
     var noteKey = event.currentTarget.innerText.split('');
@@ -178,7 +157,6 @@ $(document).ready(function(){
   $('.container-data').on('mouseleave', '.note', function(event) {
     $('.popUp-dialogUI').dialog('close');
   })
-
 
   $('.btn-delete').on('click', function(event) {
     var topicKey = $('.topic-list-input').val();
