@@ -115,6 +115,7 @@ $(document).ready(function(){
     obj = JSON.stringify(obj);
     localStorage.setItem('data', obj)
     reloadTopics();
+    reloadTopicDropDown();
     // localStorage.clear();
     // $('.container-data').text('');
     $('.topic-list-input').val('');
