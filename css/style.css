@@ -42,7 +42,7 @@ header {
 }
 
 .note-content {
-	max-width: 800px;
+	max-width: 730px;
 	border-style: solid;
 	border-color: black;
 	display: flex;
@@ -68,6 +68,7 @@ header {
 	border-color: black;
 	outline: none;
 	overflow: hidden;
+	max-height: 500px
 }
 
 .btn-clear {
