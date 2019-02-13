@@ -11,7 +11,7 @@ Create Read Update and Delete framework using JS
 - [X] How to view data? (style?)
 - [X] UI/UX considerations (how are we going to use this)
 - [X] make button to delete note
-- [ ] make button to delete topic
+- [X] make button to delete topic
 
 ### Advanced Reqs
 - [ ] Item that I added goes here...
@@ -20,7 +20,7 @@ Create Read Update and Delete framework using JS
 
 content editable for div- https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Editable_content
 dialog for mouse over/have to import jQuery UI also to use this-https://jqueryui.com/dialog/
-- [ ] make back to topics button
+- [X] make back to topics button
 - [X] make it into a note taking app
 - [ ] have the delete button be a trash can
 - [ ] submit button just a square + button
