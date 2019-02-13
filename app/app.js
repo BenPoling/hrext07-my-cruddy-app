@@ -150,18 +150,10 @@ $(document).ready(function(){
   })
 
   $('.container-data').on('click', '.topic', function(event) {
-    var obj = JSON.parse(localStorage.getItem('data'));
     var key = event.currentTarget.innerText.split('');
     var index = key.indexOf('|');
     key = key.slice(index + 2).join('');
-    $('.container-data').empty();
-    for(var prop in obj[key]) {
-      var $noteDiv = $('<button></button>');
-      $noteDiv.addClass('note');
-      $noteDiv.addClass(key);
-      $noteDiv.text(`Note | ${prop}`);
-      $('.container-data').append($noteDiv)     
-    }
+    reloadNotes(key);
     $('.topic-list-input').val(key);
     $('.popUp-dialogUI').dialog('close');
   })  
