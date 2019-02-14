@@ -10,7 +10,7 @@ $(document).ready(function(event) {
     reloadToDo();
   }
 
-  $('.btn-addToDo').on('click', function(event) {
+  var addToDo = function() {
   	var $toDo = $('.input-toDo').val();
   	var $toDoID = $('.input-toDo').val()
   	$toDoID = $toDoID.split(' ').join('-');
@@ -32,6 +32,17 @@ $(document).ready(function(event) {
       localStorage.setItem('dataToDo', objToDo);
       $($listItem).appendTo('.container-toDoList')
       $('.input-toDo').val('');
+  	}
+  }
+
+  $('.btn-addToDo').on('click', function(event) {
+  	addToDo();
+  })
+
+  $('.input-toDo').keypress(function(event) {
+  	var key = event.keyCode;
+  	if(key === 13) {
+      addToDo();
   	}
   })
 
