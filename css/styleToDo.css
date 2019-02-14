@@ -19,13 +19,22 @@ header {
 
 .title {
 	background-color: grey;
+	border-radius: 8px;
 }
 
 a {
-	color: black;
+    display: flex;
+    justify-content: center;
+    background-color: grey;
+    max-width: 215px;
+    margin: auto;
+    margin-bottom: 35px;
+    font-family: Luminari;
+    border-radius: 5px;
+    color: black;
 }
 
-.link-noteApp {
+/*.link-noteApp {
 	display: flex;
 	justify-content: center;
 	background-color: grey;
@@ -33,7 +42,7 @@ a {
 	margin: auto;
 	margin-bottom: 35px;
 	font-family: Luminari;
-}
+}*/
 
 .container-addToDo {
 	display: flex;
@@ -62,13 +71,18 @@ a {
 .toDoItem {
 	background-color: lightgrey;
 	margin-bottom: 10px;
-	max-width: 238px;
+/*	max-width: 238px;*/
 	display: flex;
 	justify-content: space-between;
+	border-radius: 5px;
 }
 
 .toDoDiv {
 	display: flex;
     justify-content: center;
+}
+
+.btn-delete {
+	margin-left: 10px;
 }
 
