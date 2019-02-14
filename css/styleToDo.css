@@ -18,31 +18,21 @@ header {
 }
 
 .title {
-	background-color: grey;
+/*	background-color: grey;*/
 	border-radius: 8px;
 }
 
 a {
     display: flex;
     justify-content: center;
-    background-color: grey;
+/*    background-color: grey;*/
     max-width: 215px;
     margin: auto;
-    margin-bottom: 35px;
+    margin-bottom: 50px;
     font-family: Luminari;
     border-radius: 5px;
     color: black;
 }
-
-/*.link-noteApp {
-	display: flex;
-	justify-content: center;
-	background-color: grey;
-	max-width: 215px;
-	margin: auto;
-	margin-bottom: 35px;
-	font-family: Luminari;
-}*/
 
 .container-addToDo {
 	display: flex;
@@ -65,13 +55,11 @@ a {
 	display: flex;
 	justify-content: center;
 	flex-direction: column-reverse;
-/*    margin-left: 418px;*/
 }
 
 .toDoItem {
 	background-color: lightgrey;
 	margin-bottom: 10px;
-/*	max-width: 238px;*/
 	display: flex;
 	justify-content: space-between;
 	border-radius: 5px;
