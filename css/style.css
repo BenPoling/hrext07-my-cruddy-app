@@ -25,6 +25,7 @@ header {
 
 .title {
 	background-color: grey;
+	border-radius: 8px;
 }
 
 .container-data {
@@ -73,17 +74,20 @@ header {
 
 .btn-clear {
 	background-color: #7b0b0b;
+	border-radius: 5px;
 }
 
 .btn-submit {
 	background-color: #285028;
 	margin-left: 10px;
 	margin-right: 10px;
+	border-radius: 5px;
 }
 
 .btn-delete {
 	margin-right: 20px;
 	background-color: #b78220;
+	border-radius: 5px;
 }
 
 .popUp-dialogUI {
@@ -97,12 +101,14 @@ header {
 	display: flex;
 	justify-content: center;
 	background-color: grey;
+	border-radius: 5px;
 }
 
 .note {
 	margin-bottom: 10px;
 	width: 200px;
 	background-color: grey;
+	border-radius: 5px;
 }
 
 .btn-clearInput {
@@ -117,6 +123,7 @@ header {
 .btn-topics {
 	margin-right: 10px;
 	background-color: grey;
+	border-radius: 5px
 }
 
 a {
@@ -131,4 +138,5 @@ a {
 	margin: auto;
 	margin-bottom: 35px;
 	font-family: Luminari;
+	border-radius: 5px;
 }
