@@ -1,12 +1,7 @@
 $(document).ready(function(event) {
-  // var deleteClass = 'btn-delete'
-  // var $listItem = `<li> <button class=${deleteClass}>delete</button></li>`
   var reloadToDo = function() {
   	$('.container-toDoList').empty();
     var toDoObj = JSON.parse(localStorage.getItem('dataToDo'));
-    // if(toDoObj === undefined) {
-    // 	$('')
-    // }
     for(var key in toDoObj) {
       $(toDoObj[key]).appendTo('.container-toDoList')
     }
