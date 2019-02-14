@@ -1,9 +1,3 @@
-/*
-Init app
-interact with DOM
-interact with localstorage
-
- */
 
 $(document).ready(function(){
 
