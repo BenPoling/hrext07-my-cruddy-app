@@ -3,12 +3,8 @@ html, body {
 }
 
 body {
-	background-image: url(img287.jpg);
-/*	background-image: url(img312);*/
-	background-repeat: no-repeat;
+	background-image: url(img312.jpg);
 	background-size: 100% 100%;
-/*	width: 100%;
-	height: auto;*/
 }
 
 .btn-div {
@@ -27,8 +23,8 @@ header {
 }
 
 .title {
-	background-color: grey;
-	border-radius: 8px;
+    mix-blend-mode: difference;
+    color: white;
 }
 
 .container-data {
@@ -129,17 +125,16 @@ header {
 	border-radius: 5px
 }
 
-a {
+/*a {
 	color: black;
-}
+}*/
 
 .link-ToDo {
-	display: flex;
-	justify-content: center;
-	background-color: grey;
-	max-width: 215px;
-	margin: auto;
-	margin-bottom: 35px;
-	font-family: Luminari;
-	border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    max-width: 215px;
+    margin: auto;
+    margin-bottom: 50px;
+    font-family: Luminari;
+    color: white;
 }
