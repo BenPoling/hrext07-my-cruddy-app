@@ -49,6 +49,7 @@ header {
     overflow: scroll;
     background-color: grey;
     outline: none;
+    margin-top: 10px;
 }
 
 .ui-dialog-titlebar-close{
@@ -71,18 +72,18 @@ header {
 }
 
 .btn-clear {
-	background-color: red;
+	background-color: #7b0b0b;
 }
 
 .btn-submit {
-	background-color: green;
+	background-color: #285028;
 	margin-left: 10px;
 	margin-right: 10px;
 }
 
 .btn-delete {
 	margin-right: 20px;
-	background-color: orange;
+	background-color: #b78220;
 }
 
 .popUp-dialogUI {
