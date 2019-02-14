@@ -56,7 +56,7 @@ a {
 	display: flex;
 	justify-content: center;
 	flex-direction: column-reverse;
-    margin-left: 418px;
+/*    margin-left: 418px;*/
 }
 
 .toDoItem {
@@ -65,5 +65,10 @@ a {
 	max-width: 238px;
 	display: flex;
 	justify-content: space-between;
+}
+
+.toDoDiv {
+	display: flex;
+    justify-content: center;
 }
 
