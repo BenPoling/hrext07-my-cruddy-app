@@ -47,12 +47,12 @@ $(document).ready(function(){
     var topic = $('.topic-list-input').val();
     var keyData = $('.input-key').val();
     var valueData = $('.note-content').text();
-    if(keyData === '') {
-      alert('No title!');
-    } else if(valueData === '') {
-      alert('No note content!');t
-    } else if(topic === '') {
+    if(topic === '') {
       alert('No topic!');
+    } else if(keyData === '') {
+      alert('No title!');t
+    } else if(valueData === '') {
+      alert('No Note Content!');
     } else if(localStorage.getItem('data') === null) {
       var obj = {};
       var noteObj = {};
